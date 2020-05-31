@@ -1,0 +1,24 @@
+{
+  "noAudioTitle": "",
+  "origins": {
+    "https://vk.com": {
+      "cutFromStart": 0,
+      "cutFromEnd": null,
+      "pathWhiteListRules": ["/^\/audios\\d+/"],
+      "titleBlackListRules": ["/Моя музыка/i"]
+    },
+    "https://music.yandex.ru": {
+      "cutFromStart": 0,
+      "cutFromEnd": null,
+      "pathWhiteListRules": null,
+      "titleBlackListRules": ["/Яндекс/i", "/Реклама/i"]
+    },
+    "https://www.youtube.com": {
+      "cutFromStart": 0,
+      "cutFromEnd": 10,
+      "pathWhiteListRules": ["/^\/watch/"],
+      "titleBlackListRules": null
+    }
+  },
+  "serverUrl": "http://localhost:9999"
+}
