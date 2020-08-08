@@ -89,7 +89,7 @@ function sendTitle() {
     return;
   }
   let newTitle = config.noAudioTitle;
-  if (tabData.audible) {
+  if (tabData.audible && tabData.url && tabData.title) {
     const url = new URL(tabData.url);
     if (config.origins.hasOwnProperty(url.origin)) {
       const rules = config.origins[url.origin];
@@ -171,12 +171,24 @@ chrome.tabs.onUpdated.addListener(function handleTabsUpdate(tabId, changeInfo, t
     tabData.audible = changeInfo.audible;
     changed = true;
   }
+  if (tabData.audible !== tab.audible) {
+    tabData.audible = tab.audible;
+    changed = true;
+  }
   if (changeInfo.hasOwnProperty('title') && tabData.title !== changeInfo.title) {
     tabData.title = changeInfo.title;
     changed = true;
   }
+  if (tabData.title !== tab.title) {
+    tabData.title = tab.title;
+    changed = true;
+  }
   if (changeInfo.hasOwnProperty('url') && tabData.url !== changeInfo.url) {
     tabData.url = changeInfo.url;
+    changed = true;
+  }
+  if (tabData.url !== tab.url) {
+    tabData.url = tab.url;
     changed = true;
   }
   if (changed) {
